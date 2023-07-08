@@ -69,9 +69,10 @@ echo
 echo "**** install kubectl, kubeadm and kubelet ****"
 echo 
 
-apt-get -y install kubectl
-apt-get -y install kubeadm
-apt-get -y install kubelet
+apt-get -y install kubectl kubeadm kubelet
+apt remove containerd
+rm -f /etc/containerd/config.toml
+systemctl restart containerd
 
 echo 
 echo "**** init cluster ****"
